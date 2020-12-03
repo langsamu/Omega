@@ -1,1 +1,39 @@
-﻿<h1>default</h1>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>TNA Omega showcase</title>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <h1>TNA Omega showcase</h1>
+    <p>This is a showcase API application I had built for the interview for this role at The National Archives: <a href="https://www.digitalmarketplace.service.gov.uk/digital-outcomes-and-specialists/opportunities/13372">Developer to build alpha for managing catalogue data using RDF</a>.</p>
+    <p>Source-code is available in <a href="https://github.com/langsamu/Omega">this GitHub repository</a>.</p>
+    <h2>Components</h2>
+    <ul>
+        <li>
+            <strong>Dereference endpoint</strong> for resolving resource URIs to their RDF representations.
+            <br />
+            Example: <code><a href="http://omega.langsamu.net/id/MSW.2020.2YC.P">http://omega.langsamu.net/id/MSW.2020.2YC.P</a></code>
+        </li>
+        <li>
+            <strong>Download endpoint</strong> for retrieving the entire triplestore as a compressed TriG file.
+            <br />
+            Example: <code><a href="/download">/download</a></code>
+        </li>
+        <li>
+            <strong>Query endpoint</strong> for running pre-written named SPARQL queries.
+            <br />
+            Example: <code><a href="/query/all">All statements</a></code>
+        </li>
+        <li>
+            <strong>SPARQL endpoint</strong> for running arbitrary queries against the triplestore.
+            <br />
+            Example: <code><a href="/sparql/ui#query=PREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0A%0ACONSTRUCT%20%7B%0A%20%20%3Fs%20a%20rdfs%3AResource%20.%0A%7D%0AWHERE%20%7B%0A%20%20%3Fs%20%3Fp%20%3Fo%20.%0A%20%20FILTER(STRSTARTS(STR(%3Fs)%2C%20%22http%3A%2F%2Fomega.langsamu.net%2Fid%2F%22))%0A%7D">Show own resources</a></code>
+        </li>
+        <li>
+            <strong>Viewer endpoint</strong> for visualising graphviz files.
+            <br />
+            Example: <code><a href="/view#query/resource.dot?uri=http%3A%2F%2Frdaregistry.info%2FElements%2Fc%2FC10004">Visualise people</a></code>
+        </li>
+</body>
+</html>

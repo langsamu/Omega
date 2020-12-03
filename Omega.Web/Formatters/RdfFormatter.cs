@@ -22,10 +22,6 @@ namespace Omega.Web
             this.definition = definition;
         }
 
-        protected override bool CanWriteType(Type type) =>
-            typeof(IGraph).IsAssignableFrom(type) ||
-            (this.definition.SparqlWriter is object && typeof(SparqlResultSet).IsAssignableFrom(type));
-
         public override Task WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
         {
             // Because RDF writer writes synchronously
@@ -41,12 +37,16 @@ namespace Omega.Web
 
                 case SparqlResultSet results:
                     // SparqlWriter definitely there if we got past CanWriteType
-                    this.definition.SparqlWriter()!.Save(results, textWriter);
+                    this.definition.SparqlWriter!().Save(results, textWriter);
                     break;
             }
 
             return Task.CompletedTask;
         }
+
+        protected override bool CanWriteType(Type type) =>
+            typeof(IGraph).IsAssignableFrom(type) ||
+            (this.definition.SparqlWriter is object && typeof(SparqlResultSet).IsAssignableFrom(type));
 
         /// <remarks>See https://github.com/dotnet/aspnetcore/issues/7644.</remarks>
         private static void AllowSynchronousIo(OutputFormatterWriteContext context)

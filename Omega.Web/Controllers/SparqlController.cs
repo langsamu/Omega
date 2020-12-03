@@ -37,7 +37,7 @@ namespace Omega.Web
         {
             if (query is null)
             {
-                return this.File(Resources.ServiceDescription, "application/rdf+xml","OmegaSparqlServiceDescription.rdf");
+                return this.File(Resources.ServiceDescription, "application/rdf+xml", "OmegaSparqlServiceDescription.rdf");
             }
             else
             {

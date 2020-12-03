@@ -12,6 +12,9 @@ namespace Omega.Web
             Stream($"{nameof(ServiceDescription)}.rdf")
             ?? throw new InvalidOperationException("SPARQL Service Description resource file not found.");
 
+        private static Assembly Assembly =>
+            typeof(Resources).Assembly;
+
         internal static string? Sparql(string name)
         {
             var stream = Stream(ResolveSparqlName(name));
@@ -23,9 +26,6 @@ namespace Omega.Web
             using var reader = new StreamReader(stream);
             return reader.ReadToEnd();
         }
-
-        private static Assembly Assembly =>
-            typeof(Resources).Assembly;
 
         private static Stream? Stream(string name) =>
             Assembly.GetManifestResourceStream(

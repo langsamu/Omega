@@ -34,7 +34,7 @@ namespace Omega.Web
         public void Dispose() =>
             this.storage.Dispose();
 
-        object ISparqlQueryable.Query(string sparql, IEnumerable<KeyValuePair<string, string>>? parameters = null)
+        object ISparqlQueryable.Query(string sparql, IEnumerable<KeyValuePair<string, string>>? parameters)
         {
             var query = new SparqlParameterizedString(sparql);
 

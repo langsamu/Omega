@@ -1,0 +1,211 @@
+@prefix cat: <http://omega.langsamu.net/id/> .
+#@prefix cat: <http://cat.nationalarchives.gov.uk/> . # The National Archives Catalogue
+
+@prefix dct: <http://purl.org/dc/terms/> . # Dublin Core Terms
+@prefix edm: <http://www.europeana.eu/schemas/edm/> . # Europeana Data Model
+@prefix erar: <http://id.loc.gov/vocabulary/preservation/> . # LoC Event Related Agent Role
+@prefix eror: <http://id.loc.gov/vocabulary/preservation/> . # LoC Event Related Object Role
+@prefix foaf: <http://xmlns.com/foaf/0.1/> . # FOAF (Friend Of A Friend)
+@prefix locah: <http://data.archiveshub.ac.uk/def/> . # Linked Open COPAC and Archives Hub
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> . # W3C ODRL
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> . # LoC PREMIS 3
+@prefix prov: <http://www.w3.org/ns/prov#> . # W3C PROV
+@prefix rdaa: <http://rdaregistry.info/Elements/a/> . # RDA Agent Properties
+@prefix rdac: <http://rdaregistry.info/Elements/c/> . # RDA Classes
+@prefix rdau: <http://rdaregistry.info/Elements/u/> . # RDA Unconstrained Properties
+@prefix rst: <http://id.loc.gov/vocabulary/preservation/> . # LoC Relationship Subtype
+@prefix schema: <http://schema.org/> . # Schema.org
+@prefix skos: <http://www.w3.org/2004/02/skos/core> . # W3C Simple Knowledge Organisation System
+@prefix ver: <http://purl.org/linked-data/version#> . # Versioning ontology
+
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+### Concept of a Record
+
+cat:MSW.2020.2YC.P
+	a premis:IntellectualEntity ;
+	dct:identifier "MSW.2020.2YC.P" ;
+	dct:format "physical" ;
+	dct:dateAccepted "2020-03-30T16:26:00Z"^^xsd:dateTime ;
+	dct:creator cat:MSW ;
+	dct:type cat:record-concept ;
+.
+
+cat:MSW a rdac:C10005 .
+
+### Concept of a Record with Provenance
+
+cat:ActivityA
+	a prov:Activity ;
+#	eror:out cat:MSW.2020.2YC.P ;
+	erar:imp cat:TommyAtkins ;
+	erar:exe cat:ILDB2Omega ;
+	prov:endedAtTime "20-03-30T17:00:00Z" ;
+	prov:startedAtTime "20-03-30T16:00:00Z" ;
+	dct:description "Initial import of Catalogue Records from ILDB into Omega" ;
+	dct:title "Accession of Record MSW.2020.2YC.P" ;
+.
+
+cat:MSW.2020.2YC.P
+	prov:generatedAtTime "2020-03-30T16:21Z"^^xsd:dateTime ;
+	prov:wasAttributedTo cat:TommyAtkins ;
+.
+
+cat:ILDB2Omega
+	a premis:SoftwareAgent ;
+	prov:actedOnBehalfOf cat:TNA ;
+	premis:documentation "https://doc.nationalarchives.gov.uk/omega/ildb2omega" ;
+	premis:version "1.2.3" ;
+	foaf:name "ILDB2Omega ETL Tool" ;
+.
+
+cat:TommyAtkins
+	a rdac:C10004 ;
+	rdaa:P50292 "Tommy" ;
+	rdaa:P50291 "Atkins" ;
+	foaf:title "Mr" ;
+	rdaa:P50104 "Senior Archivist" ;
+	rdaa:P50096 cat:TNA ;
+	prov:actedOnBehalfOf cat:TNA ;
+.
+
+cat:TNA
+	a rdac:C10005 ;
+	dct:relation <https://www.wikidata.org/wiki/Special:EntityData/Q392703> ;
+	rdaa:P50240 <https://www.wikidata.org/wiki/Special:EntityData/Q910019> ;
+	rdaa:P50032 "The National Archives" ;
+.
+
+eror:out rdfs:subPropertyOf prov:generated .
+erar:imp rdfs:subPropertyOf prov:wasAssociatedWith .
+erar:exe  rdfs:subPropertyOf prov:wasAssociatedWith .
+
+<https://www.wikidata.org/wiki/Special:EntityData/Q392703> rdfs:label "The National Archives" .
+<https://www.wikidata.org/wiki/Special:EntityData/Q910019> rdfs:label "Department for Digital, Culture, Media or Sport" .
+
+### Description of a Record
+
+# cat:MSW.2020.2YC.P
+# 	ver:currentVersion cat:MSW.2020.2YC.P.1 ;
+# .
+ 
+cat:MSW.2020.2YC.P.1
+	a premis:IntellectualEntity ;
+	prov:specializationOf cat:MSW.2020.2YC.P ;
+	dct:identifier "MSW.2020.2YC.P.1" ;
+	dct:abstract "Photos of The Pythons during rehersals for the BBC TV Series - Monty Python's Flying Circus" ;
+	schema:identifier [
+		a schema:PropertyValue ;
+		schema:propertyID "TNA-CCR" ;
+		schema:value "MSW 95/21/15" ;
+	] ;
+	dct:temporal "Between 1969-1974" ;
+	dct:accessRights [
+		a dct:RightsStatement ;
+		dct:description "Some photographs may retain in copyright" ;
+		odrl:policy [
+			a odrl:Offer ;
+			dct:description "Open on Transfer" ;
+			odrl:inheritFrom cat:read-document-policy ;
+			odrl:permission [
+				 a odrl:Permission ;
+				 odrl:target cat:MSW.2020.2YC.P.1 ;
+			] ;
+		] ;
+	] ;
+	dct:source [
+		dct:subject cat:JohnCleese ;
+	] ;
+	dct:creator cat:MSW ;
+	premis:rightsStatus cat:public-record-status ;
+	dct:type
+		cat:item,
+		cat:record-description
+	;
+	dct:provenance [
+		a dct:ProvenanceStatement ;
+		dct:type cat:custodial-history ;
+		dct:description "Files originally created by The Ministry of Silly Walks and transferred to the Public Record Office" ;
+	] ;
+.
+
+cat:JohnCleese a rdac:C10004 .
+
+cat:public-record-status
+	a premis:RightsStatus ;
+	premis:basis cat:public-record ;
+.
+
+cat:public-record
+	a premis:Statute ;
+	dct:rights <http://www.legislation.gov.uk/ukpga/1967/44/contents> ;
+.
+
+<http://www.legislation.gov.uk/ukpga/1967/44/contents> rdfs:label "Public Records Act 1967" .
+
+### Description of a Record with Provenance
+
+cat:ActivityA
+	eror:out (
+		cat:MSW.2020.2YC.P
+		cat:MSW.2020.2YC.P.1
+	) ;
+.
+
+cat:MSW.2020.2YC.P.1
+	prov:generatedAtTime "2020-03-30T16:21Z"^^xsd:dateTime ;
+	prov:wasAttributedTo cat:TommyAtkins ;
+.
+
+### 2nd Description of a Record
+
+# cat:MSW.2020.2YC.P
+# 	ver:currentVersion cat:MSW.2020.2YC.P.2 ;
+# .
+
+cat:MSW.2020.2YC.P.2
+	a premis:IntellectualEntity ;
+	prov:specializationOf cat:MSW.2020.2YC.P ;
+	prov:wasRevisionOf cat:MSW.2020.2YC.P.1 ;
+	dct:abstract "Photos of The Pythons during rehersals on-set for the BBC TV Series - Monty Python's Flying Circus" ;
+	dct:type cat:record-description ;
+.
+
+### 3rd Description of a Record
+
+cat:MSW.2020.2YC.P
+	ver:currentVersion cat:MSW.2020.2YC.P.3 ;
+.
+
+cat:MSW.2020.2YC.P.3
+	a premis:IntellectualEntity ;
+	prov:specializationOf cat:MSW.2020.2YC.P ;
+	prov:wasRevisionOf cat:MSW.2020.2YC.P.2 ;
+	dct:abstract "Photos of The Pythons during rehersals on-set for the BBC TV Series - Monty Python's Flying Circus. Seasons 1 through 3." ;
+	dct:type cat:record-description ;
+.
+
+### SHACL corrections
+
+# cat:MSW.2020.2YC.P
+# 	rdau:P60049 "root" ;
+# 	dc:title "Monty Python in rehersal" ;
+# .
+# 
+# cat:MSW.2020.2YC.P.1
+# 	rdau:P60049 "node" ;
+# 	dc:title "Original description" ;
+# .
+# 
+# cat:MSW.2020.2YC.P.2
+# 	rdau:P60049 "node" ;
+# 	dc:title "First modification" ;
+# .
+# 
+# cat:MSW.2020.2YC.P.3
+# 	rdau:P60049 "node" ;
+# 	dc:title "Second modification" ;
+# .

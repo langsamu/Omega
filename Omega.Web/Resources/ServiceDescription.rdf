@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:sd="http://www.w3.org/ns/sparql-service-description#" xmlns:void="http://rdfs.org/ns/void#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:formats="http://www.w3.org/ns/formats/" xmlns:cc="http://creativecommons.org/ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:id="http://omega.langsamu.net/id/" xmlns:premis="http://www.loc.gov/premis/rdf/v3/IntellectualEntity">
+	<sd:Service rdfs:label="The National Archives Omega SPARQL endpoint">
+		<sd:endpoint rdf:resource="http://omega.langsamu.net/sparql"/>
+		<sd:defaultDataset>
+			<sd:Dataset>
+				<sd:defaultGraph>
+					<sd:Graph rdf:about="http://omega.langsamu.net/id/" rdf:type="void:Dataset">
+						<dcterms:license>
+							<cc:License rdf:about="http://creativecommons.org/licenses/by/3.0/" dc:title="Attribution 3.0 Unported">
+								<cc:requires>
+									<cc:Requirement rdf:about="http://creativecommons.org/ns#Notice" rdfs:label="Notice" />
+									<cc:Requirement rdf:about="http://creativecommons.org/ns#Attribution" rdfs:label="Attribution" />
+								</cc:requires>
+								<cc:permits>
+									<cc:Permission rdf:about="http://creativecommons.org/ns#Reproduction" rdfs:label="Reproduction" />
+									<cc:Permission rdf:about="http://creativecommons.org/ns#DerivativeWorks" rdfs:label="Derivative Works" />
+									<cc:Permission rdf:about="http://creativecommons.org/ns#Distribution" rdfs:label="Distribution" />
+								</cc:permits>
+							</cc:License>
+						</dcterms:license>
+						<void:uriSpace>http://omega.langsamu.net/id/</void:uriSpace>
+						<void:uriLookupEndpoint rdf:resource="http://omega.langsamu.net/query/resource?uri=" rdfs:label="URI lookup endpoint" rdfs:comment="Resources can also be referenced using their URIs." />
+						<void:vocabulary rdf:resource="https://wiki.docuteam.ch/doku.php?id=docuteam:matterhornrdf" rdfs:label="Matterhorn RDF" />
+						<void:exampleResource>
+							<premis:IntellectualEntity rdf:about="http://omega.langsamu.net/id/MSW.2020.2YC.P" rdfs:label="Concept of Monty Python in rehersal" />
+							<premis:IntellectualEntity rdf:about="http://omega.langsamu.net/id/MSW.2020.2YC.P.1" rdfs:label="Description of Monty Python in rehersal" />
+						</void:exampleResource>
+						<void:dataDump rdf:resource="http://omega.langsamu.net/download" />
+						<void:sparqlEndpoint rdf:resource="http://omega.langsamu.net/sparql" />
+					</sd:Graph>
+				</sd:defaultGraph>
+			</sd:Dataset>
+		</sd:defaultDataset>
+		<sd:supportedLanguage>
+			<sd:Language rdf:about="http://www.w3.org/ns/sparql-service-description#SPARQL11Query" rdfs:label="SPARQL 1.1 Query"/>
+		</sd:supportedLanguage>
+		<sd:resultFormat>
+			<formats:Format rdf:about="http://www.w3.org/ns/formats/N3" rdfs:label="N3"/>
+			<formats:Format rdf:about="http://www.w3.org/ns/formats/SPARQL_Results_TSV" rdfs:label="SPARQL TSV" />
+			<formats:Format rdf:about="http://www.w3.org/ns/formats/RDF_XML" rdfs:label="RDF/XML" />
+			<formats:Format rdf:about="http://www.w3.org/ns/formats/SPARQL_Results_JSON" rdfs:label="SPARQL JSON" />
+			<formats:Format rdf:about="http://www.w3.org/ns/formats/TriG" rdfs:label="Trig" />
+			<formats:Format rdf:about="http://www.w3.org/ns/formats/N-Triples" rdfs:label="N-Triples" />
+			<formats:Format rdf:about="http://www.w3.org/ns/formats/SPARQL_Results_XML" rdfs:label="SPARQL XML" />
+			<formats:Format rdf:about="http://www.w3.org/ns/formats/SPARQL_Results_CSV" rdfs:label="SPARQL CXV" />
+			<formats:Format rdf:about="http://www.w3.org/ns/formats/JSON-LD" rdfs:label="JSON-LD" />
+			<formats:Format rdf:about="http://www.w3.org/ns/formats/N-Quads" rdfs:label="N-Quads" />
+			<formats:Format rdf:about="http://www.w3.org/ns/formats/Turtle" rdfs:label="Turtle" />
+			<!--
+				Also:
+				- text/boolean
+				- TriX
+				- application/x-binary-rdf-results-table
+				- application/x-binary-rdf
+			-->
+		</sd:resultFormat>
+		<sd:defaultEntailmentRegime>
+			<sd:EntailmentRegime rdf:about="http://www.w3.org/ns/entailment/Simple" rdfs:label="RDFS" />
+		</sd:defaultEntailmentRegime>
+	</sd:Service>
+</rdf:RDF>

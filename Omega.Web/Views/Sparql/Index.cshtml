@@ -1,0 +1,26 @@
+﻿@using Omega.Web
+<html>
+<head>
+    <link href="https://unpkg.com/@@triply/yasgui/build/yasgui.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/@@triply/yasgui/build/yasgui.min.js"></script>
+    <style>
+        .yasgui .autocompleteWrapper {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="yasgui"></div>
+    <script>
+        const yasgui = new Yasgui(document.getElementById("yasgui"), {
+            requestConfig: {
+                endpoint: "@Url.Action(nameof(SparqlController.Proxy))"
+            },
+            yasqe: {
+                value: "SELECT *\nWHERE { ?s ?p ?o }\nLIMIT 10"
+            },
+            copyEndpointOnNewTab: false
+        });
+    </script>
+</body>
+</html>

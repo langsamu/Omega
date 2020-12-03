@@ -21,6 +21,6 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources/**/*.*" />
-    <AdditionalFiles Include="stylecop.json" />
+    <AdditionalFiles Include="../stylecop.json" />
   </ItemGroup>
 </Project>
